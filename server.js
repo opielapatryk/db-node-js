@@ -1,8 +1,14 @@
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
-const users = []
+const passport = reqiore('passport')
 
+const initializePassport = require('./passport-config')
+initializePassport(
+    passport, 
+    email => users.find(user => user.email === email)
+)
+const users = []
 app.set('view-engine','ejs')
 app.use(express.urlencoded({extended:false}))
 app.get('/', (req,res)=>{
